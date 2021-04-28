@@ -5,9 +5,12 @@ Create Project
 Create django application
 - django-admin startapp core
 
+Create application migrations
+- python manage.py makemigrations
+
+Execute migrations
+- python manage.py migrate
+
 Run project
 - python manage.py runserver
-
-Create Migrations the of apps
-- python manage.py makemigrations
 """
