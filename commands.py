@@ -11,6 +11,9 @@ Create application migrations
 Execute migrations
 - python manage.py migrate
 
+Create administrative User
+- python manage.py createsuperuser
+
 Run project
 - python manage.py runserver
 """
