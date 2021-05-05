@@ -285,7 +285,7 @@ button {
 	margin-left: 0px;
 }
 
-.buy_bt{ 
+.login_bt{
 	width: 32%;
 	height: 50px;
 	background-color: #40ff40;
@@ -293,14 +293,18 @@ button {
 	font-size: 16pt;
  }
 
- .more_bt{
-	width: 32%;
-	height: 50px;
-	color: red;
-	background-color: #ffffff;
-	font-size: 16pt;
-	margin-left: 25px;
- }
+.register_bt{
+    width: 32%;
+    height: 50px;
+    color: black;
+    background-color: #ffffff;
+    font-size: 16pt;
+    margin-left: 25px;
+}
+.register_bt:hover, .login_bt:hover{
+    background-color: black;
+    color: #40ff40;
+}
 
 .banner_taital{
 	width: 100%;
@@ -573,6 +577,9 @@ body{
 	color: #000;
 	text-align: center;
     margin-left: 0px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 .shoes_icon{
 	width: 100%;
@@ -580,7 +587,6 @@ body{
 	text-align: center;
 	min-height: 220px;
 	cursor: pointer;
-	margin-left:20px;
 }
 
 .star_text{
@@ -631,8 +637,8 @@ body{
 }
 .email_box {
     width: 85%;
-    float: right;
     background-color: #14120e;
+    text-align:center;
     height: auto;
     padding: 20px 20px;
     opacity: 0.80;

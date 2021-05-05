@@ -83,9 +83,13 @@
     			<div class="col-sm-4">
     				<div class="best_shoes">
     					<p class="best_text">{{product.name}}</p>
-    					<div class="shoes_icon"><img src="{% static 'images/camisa_psg.jpg' %}"></div>
+						<a href="{% url 'product' product.id %}">
+    						<div class="shoes_icon"><img src="{% static 'images/camisa_psg.jpg' %}"></div>
+						</a>
 						<div class="shoes_price">R$ <span style="color: #fffff;">{{product.price}}</span></div>
-						<button href="" class="buy_text">Comprar</button>
+						<a href="{% url 'product' product.id %}">
+							<button class="buy_text">Comprar</button>
+						</a>
     				</div>
     			</div>
 				{% endfor %}
