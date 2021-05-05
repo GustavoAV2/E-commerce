@@ -16,4 +16,8 @@ Create administrative User
 
 Run project
 - python manage.py runserver
+
+Create static of production
+- python manage.py collectstatic
+
 """
