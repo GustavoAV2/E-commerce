@@ -32,13 +32,10 @@ def collection(request, pag: int = 1):
 def product(request, product_id: int):
     product_selected = Product.objects.get(id=product_id)
     context = {
-        "product": product_selected
+        "product": product_selected,
+        "sizes": [size for size in range(1, product_selected.amount)]
     }
     return render(request, "product.html", context)
-
-
-def test(request):
-    return render(request, "racing_boots.html")
 
 
 def about(request):

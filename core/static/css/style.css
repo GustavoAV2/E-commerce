@@ -490,7 +490,18 @@ body{
     padding-left: 70px;
     padding-bottom: 70px;
 }
-.shoes-img3{ width: 100%; text-align: center; }
+.shoes-img3{ width: 100%; text-align: center;}
+.view-product{ text-align:center; }
+.size_btn{
+    padding: 6px;
+    border-radius: 4px;
+    margin-right:5px;
+    margin-left:5px;
+}
+.size_btn:hover{
+    color: #40ff40;
+    background-color:black;
+}
 
 .collection_text{ 
     width: 100%; 
@@ -519,7 +530,7 @@ body{
 }
 
 .filters{
-    float: right;
+    display: flex;
     z-index: 1;
 }
 
@@ -616,7 +627,7 @@ body{
 	background-color: #131111;
 	color: #ffffff;
 	font-size: 16pt;
-	margin-top: 10%;
+	margin-top: 5%;
 }
 .buy_now_bt{
 	width: 50%;
@@ -835,4 +846,17 @@ a:hover {
     width: 100%;
     height: auto;
     background: #0c0116;
+}
+
+.header_back{
+    color: black;
+    margin: 25px;
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+.header_back:hover{
+    color: #40ff40;
+}
+.back:hover{
+    color: #40ff40;
 }
