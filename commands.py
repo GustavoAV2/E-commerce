@@ -21,8 +21,6 @@ Run project
 Create static of production (DEBUG=False)
 - python manage.py collectstatic
 
-
-
 Install
 - pip install whitenoise gunicorn
 $ Adding in HIDDLEWARE
