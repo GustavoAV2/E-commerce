@@ -1,5 +1,8 @@
 from django.shortcuts import render
 from core.models import Product
+from django.shortcuts import get_object_or_404
+from django.http import HttpResponse
+from django.template import loader
 
 
 def index(request):
@@ -30,13 +33,27 @@ def collection(request, pag: int = 1):
 
 
 def product(request, product_id: int):
-    product_selected = Product.objects.get(id=product_id)
+    # product_selected = Product.objects.get(id=product_id)
+    product_selected = get_object_or_404(Product, id=product_id)
+
     context = {
         "product": product_selected,
+        "catalog": True,
         "sizes": [size for size in range(1, product_selected.amount)]
     }
     return render(request, "product.html", context)
 
 
 def about(request):
-    return render(request, "about.html")
+    return render(request, "contact.html")
+
+
+def error404(request, exception):
+    template = loader.get_template("errors/404.html")
+    return HttpResponse(content=template.render(), content_type='text/html; charset=utf8', status=404)
+
+
+def error500(request):
+    template = loader.get_template("errors/500.html")
+    return HttpResponse(content=template.render(), content_type='text/html; charset=utf8', status=500)
+

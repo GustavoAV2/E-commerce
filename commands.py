@@ -17,7 +17,13 @@ Create administrative User
 Run project
 - python manage.py runserver
 
+# DEPLOY
 Create static of production (DEBUG=False)
 - python manage.py collectstatic
 
+
+
+Install
+- pip install whitenoise gunicorn
+$ Adding in HIDDLEWARE
 """

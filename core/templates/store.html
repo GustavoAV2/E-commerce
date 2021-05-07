@@ -1,6 +1,6 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
    <head>
       <!-- basic -->
       <meta charset="utf-8">
@@ -9,7 +9,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <meta name="viewport" content="initial-scale=1, maximum-scale=1">
       <!-- site metas -->
-      <title>Shoes</title>
+      <title>Loja</title>
       <meta name="keywords" content="">
       <meta name="description" content="">
       <meta name="author" content="">
@@ -60,28 +60,56 @@
 		</div>
 	</div>
 	<!-- New Arrivals section start -->
-  	<div class="collection_text">Loja</div>
-
-	<div class="filters">
-		<div>
-			<label>Filtrar:</label>
-			<select>
-			</select>
-		</div>
-
-		<div>
-			<label>Pesquisar:</label>
-			<input type="text" placeholder="Nome do produto..." style="width:350px;">
-			<button class="btn-search">
-				Buscar
-			</button>
+  	<div class="collection_text">
+		Loja
+		<div class="filters">
+			<div>
+				<label>Pesquisar:</label>
+				<input type="text" placeholder="Nome do produto..." style="width:350px;">
+				<button class="btn-search">
+					Buscar
+				</button>
+			</div>
+			<div style="padding-left:20px;">
+				<label>Filtrar:</label>
+				<select>
+					<option>Relevância</option>
+					<option>Promoção</option>
+					<option>Maior preço</option>
+					<option>Menor preço</option>
+				</select>
+			</div>
+			<div style="padding-left:20px;">
+				<label>Tamanhos:</label>
+				<select>
+					<option>...</option>
+					<option>P</option>
+					<option>M</option>
+					<option>G</option>
+					<option>GG</option>
+				</select>
+			</div>
 		</div>
 	</div>
-
 
     <div class="layout_padding gallery_section">
     	<div class="container">
     		<div class="row">
+				{% if catalog %}
+				<div class="col-sm-6">
+					<h1>adasdadd</h1>
+					<h1>adasdadd</h1>
+					<h1>adasdadd</h1>
+					<h1>adasdadd</h1>
+					<h1>adasdadd</h1>
+    				<a>Roupas</a>
+    				<a>Roupas</a>
+    				<a>Roupas</a>
+    				<a>Roupas</a>
+    				<a>Roupas</a>
+    			</div>
+				{% endif %}
+
 				{% for product in products %}
     			<div class="col-sm-4">
     				<div class="best_shoes">
