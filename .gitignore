@@ -2,8 +2,6 @@
 __pycache__/
 *.py[cod]
 *$py.class
-Pipfile
-Pipfile.lock
 
 # C extensions
 *.so
@@ -111,6 +109,8 @@ venv/
 ENV/
 env.bak/
 venv.bak/
+Pipfile
+Pipfile.lock
 
 # Spyder project settings
 .spyderproject
