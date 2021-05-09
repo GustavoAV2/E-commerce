@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-a8*c0@5vpxfzq8p))t5qwc4ol9u(qs=i^lxr2$qy6t@os=3w5m
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = ["undergroundstore-app.herokuapp.com"]
 
 
 # Application definition
@@ -39,6 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'core',
+    'bootstrap4',
+    'stdimage'
 ]
 
 MIDDLEWARE = [
@@ -78,6 +80,13 @@ WSGI_APPLICATION = 'ecommerce.wsgi.application'
 
 DATABASES = {
     'default': {
+        # 'ENGINE': 'django.db.backends.mysql',
+        # 'NAME': 'ecommerce',
+        # 'USER': 'admin',
+        # 'PASSWORD': 'root',
+        # 'HOST': 'localhost',
+        # 'PORT': '3306',
+
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     }
@@ -109,6 +118,7 @@ AUTH_PASSWORD_VALIDATORS = [
 LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'UTC'
+# TIME_ZONE = 'America/Sao_Paulo'
 
 USE_I18N = True
 

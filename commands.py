@@ -24,4 +24,5 @@ Create static of production (DEBUG=False)
 Install
 - pip install whitenoise gunicorn
 $ Adding in HIDDLEWARE
+- pip install django whitenoise gunicorn django-bootstrap4 PyMySQL django-stdimage
 """

@@ -17,13 +17,14 @@ class Product(models.Model):
 
 
 class User(models.Model):
-    name = models.CharField("name", max_length=100)
+    first_name = models.CharField("name", max_length=100)
+    last_name = models.CharField("name", max_length=100)
     email = models.EmailField("e-mail", max_length=100)
     password = models.CharField("password", max_length=100)
 
     def serialize(self):
         return {
-            "name": self.name,
+            "name": f"{self.first_name}  {self.last_name}",
             "email": self.email,
             "password": self.password,
         }
