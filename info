@@ -1,0 +1,5 @@
+Ubuntu
+$ sudo apt-get install libmysqlclient-dev python3-dev
+
+Mac
+$ brew install mysql-connector-c
