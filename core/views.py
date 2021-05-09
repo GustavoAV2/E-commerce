@@ -33,7 +33,6 @@ def collection(request, pag: int = 1):
 
 
 def product(request, product_id: int):
-    # product_selected = Product.objects.get(id=product_id)
     product_selected = get_object_or_404(Product, id=product_id)
 
     context = {
