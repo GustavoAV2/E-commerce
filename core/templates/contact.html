@@ -70,7 +70,9 @@
 </div>
 <div class="layout_padding contact_section">
     <div class="container background-black">
-
+        <div class="container" style="margin-top:5px; text-align:center;">
+            {% bootstrap_messages %}
+        </div>
         <form action="{% url 'about' %}" method="post" class="form" autocomplete="off">
             {% csrf_token %}
             {% bootstrap_form form %}
@@ -81,9 +83,7 @@
              </div>
             {% endbuttons %}
         </form>
-        <div class="container" style="margin-top:5px; text-align:center;">
-            {% bootstrap_messages %}
-        </div>
+
     </div>
 
 </div>

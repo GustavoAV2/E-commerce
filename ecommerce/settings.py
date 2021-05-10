@@ -135,6 +135,13 @@ STATIC_URL = '/static/'  # Development
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  # Production
 LOGOUT_REDIRECT_URL = "index"
 
+EMAIL_HOST = 'underground.store3@gmail.com'
+EMAIL_HOST_PASSWORD = 'semtemporuim'
+# EMAIL_HOST = 'localhost'
+# EMAIL_PORT = 587
+# EMAIL_USER_TSL = True
+
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 

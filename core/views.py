@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.shortcuts import get_object_or_404
 from django.http import HttpResponse
 from django.template import loader
@@ -45,20 +45,15 @@ def product(request, product_id: int):
     return render(request, "product.html", context)
 
 
+def payment_product(product: Product):
+    pass
+
+
 def about(request):
     form = ContactForm(request.POST or None)
     if str(request.method) == "POST":
         if form.is_valid():
-            name = form.cleaned_data["name"]
-            email = form.cleaned_data["email"]
-            subject = form.cleaned_data["subject"]
-            message = form.cleaned_data["message"]
-
-            print(name)
-            print(email)
-            print(subject)
-            print(message)
-
+            form.send_email()
             messages.success(request, "E-mail enviado com sucesso!")
             form = ContactForm()
         else:
