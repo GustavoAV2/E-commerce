@@ -11,13 +11,15 @@ def index(request):
     products = Product.objects.all()
     last_number = 9 if len(products) > 9 else len(products)
 
-    context = {
-        "products": products[0:last_number],
-        "new": {
-            "name": products[0].name.split(' '),
-            "price": products[0].price
+    context = {}
+    if products:
+        context = {
+            "products": products[0:last_number],
+            "new": {
+                "name": products[0].name.split(' '),
+                "price": products[0].price
+            }
         }
-    }
     return render(request, "index.html", context)
 
 

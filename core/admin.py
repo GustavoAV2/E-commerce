@@ -2,9 +2,12 @@ from django.contrib import admin
 from .models import User, Product
 
 
+@admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
-    list_display = ("name", "price", "amount")
+    list_display = ("name", "price", "amount", "slug", "creation_date", "active")
 
 
-admin.site.register(User)
-admin.site.register(Product, ProductAdmin)
+@admin.register(User)
+class UserAdmin(admin.ModelAdmin):
+    list_display = ("first_name", "last_name", "email", "creation_date", "active")
+

@@ -1,11 +1,27 @@
 from django.db import models
+from stdimage.models import StdImageField
+
+# Signals
+from django.db.models import signals
+from django.template.defaultfilters import slugify
 
 
-class Product(models.Model):
+class Base(models.Model):
+    creation_date = models.DateField("creation date", auto_now_add=True)
+    modified = models.DateField("update date", auto_now_add=True)
+    active = models.BooleanField("active", default=True)
+
+    class Meta:
+        abstract = True
+
+
+class Product(Base):
+    image = StdImageField("image", upload_to="products", variations={'thumb': (124, 124)})
     name = models.CharField("name", max_length=100)
     price = models.DecimalField("price", decimal_places=2, max_digits=6)
     description = models.CharField("description", null=True, max_length=300)
     amount = models.IntegerField("amount")
+    slug = models.SlugField('slug', max_length=100, blank=True, editable=False)
 
     def serialize(self):
         return {
@@ -16,10 +32,10 @@ class Product(models.Model):
         }
 
 
-class User(models.Model):
-    first_name = models.CharField("name", max_length=100)
-    last_name = models.CharField("name", max_length=100)
-    email = models.EmailField("e-mail", max_length=100)
+class User(Base):
+    first_name = models.CharField("first name", max_length=100)
+    last_name = models.CharField("last name", max_length=100)
+    email = models.EmailField("email", max_length=100)
     password = models.CharField("password", max_length=100)
 
     def serialize(self):
@@ -28,3 +44,10 @@ class User(models.Model):
             "email": self.email,
             "password": self.password,
         }
+
+
+def product_pre_save(signal, instance, sender, **kwargs):
+    instance.slug = slugify(instance.name)
+
+
+signals.pre_save.connect(product_pre_save, sender=Product)
