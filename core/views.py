@@ -4,7 +4,7 @@ from django.http import HttpResponse
 from django.template import loader
 from django.contrib import messages
 from core.models import Product
-from .forms import ContactForm
+from .forms import ContactForm, ProductModelForm
 
 
 def index(request):
@@ -45,6 +45,18 @@ def product(request, product_id: int):
         "sizes": [size for size in range(1, product_selected.amount)]
     }
     return render(request, "product.html", context)
+
+
+def register_product(request):
+    if request.POST:
+        form = ProductModelForm(request.POST, request.FILES)
+        if form.is_valid():
+            prod = form.save(commit=False)
+            print(prod.name)
+    else:
+        form = ProductModelForm()
+    context = {"form": form}
+    return render(request, "register_product.html", context)
 
 
 def payment_product(product: Product):

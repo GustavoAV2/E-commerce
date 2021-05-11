@@ -3,6 +3,8 @@ import smtplib
 from email.message import EmailMessage
 from ecommerce.settings import EMAIL_HOST, EMAIL_HOST_PASSWORD
 
+from .models import Product
+
 
 class ContactForm(forms.Form):
     name = forms.CharField(label='Nome', max_length=100)
@@ -33,3 +35,10 @@ class ContactForm(forms.Form):
         with smtplib.SMTP_SSL("smtp.gmail.com", 465) as smtp:
             smtp.login(EMAIL_HOST, EMAIL_HOST_PASSWORD)
             smtp.send_message(message)
+
+
+class ProductModelForm(forms.ModelForm):
+    class Meta:
+        model = Product
+        fields = ['image', 'name', 'amount', 'price', 'description']
+
