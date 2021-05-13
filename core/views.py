@@ -16,6 +16,8 @@ def index(request):
         context = {
             "products": products[0:last_number],
             "new": {
+                "id": products[0].id,
+                "image": products[0].image,
                 "name": products[0].name.split(' '),
                 "price": products[0].price
             }

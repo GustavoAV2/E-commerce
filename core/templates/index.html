@@ -94,7 +94,9 @@
     		<div class="new_product">
     			<div class="row">
     				<div class="col-md-8">
+						<a href="{% url 'product' new.id %}">
     					<div class="shoes-img3"><img src="{{ new.image.url }}"></div>
+						</a>
     				</div>
     				<div class="col-md-4">
     					<div class="sale_text">
@@ -103,7 +105,9 @@
 							<br>{{new.name.3}}</strong>
 							<div class="number_text"><strong>R$<span style="color: #fffff">{{new.price}}</span></strong></div>
 						</div>
-						<button class="buy_new">Comprar</button>
+						<a href="{% url 'product' new.id %}">
+							<button class="buy_new">Comprar</button>
+						</a>
 					</div>
     			</div>
     		</div>
@@ -125,9 +129,11 @@
     			<div class="col-sm-4">
     				<div class="best_shoes">
     					<p class="best_text">{{product.name}}</p>
-    					<div class="shoes_icon"><img src="{{ product.image.url }}"></div>
-						<div class="shoes_price">R$ <span style="color: #fffff;">{{product.price}}</span></div>
-						<button class="buy_text">Comprar</button>
+						<a href="{% url 'product' product.id %}">
+							<div class="shoes_icon"><img src="{{ product.image.url }}"></div>
+							<div class="shoes_price">R$ <span style="color: #fffff;">{{product.price}}</span></div>
+							<button class="buy_text">Comprar</button>
+						</a>
     				</div>
     			</div>
 				{% endfor %}

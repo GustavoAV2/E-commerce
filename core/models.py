@@ -16,7 +16,7 @@ class Base(models.Model):
 
 
 class Product(Base):
-    image = StdImageField("image", upload_to="products", height_field=200, width_field=150, variations={'thumb': (124, 124)})
+    image = StdImageField("image", upload_to="products", variations={'thumb': (124, 124)})
     name = models.CharField("name", max_length=100)
     price = models.DecimalField("price", decimal_places=2, max_digits=6)
     description = models.CharField("description", null=True, max_length=300)
