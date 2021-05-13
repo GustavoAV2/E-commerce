@@ -115,7 +115,7 @@
     				<div class="best_shoes">
     					<p class="best_text">{{product.name}}</p>
 						<a href="{% url 'product' product.id %}">
-    						<div class="shoes_icon"><img src="{% static 'images/camisa_psg.jpg' %}"></div>
+    						<div class="shoes_icon"><img src="{{ product.image.url }}"></div>
 							<div class="shoes_price">R$ <span style="color: #fffff;">{{product.price}}</span></div>
 							<button class="buy_text">Comprar</button>
 						</a>

@@ -16,7 +16,7 @@ class Base(models.Model):
 
 
 class Product(Base):
-    image = StdImageField("image", upload_to="products", variations={'thumb': (124, 124)})
+    image = StdImageField("image", upload_to="products", height_field=200, width_field=150, variations={'thumb': (124, 124)})
     name = models.CharField("name", max_length=100)
     price = models.DecimalField("price", decimal_places=2, max_digits=6)
     description = models.CharField("description", null=True, max_length=300)
@@ -29,20 +29,6 @@ class Product(Base):
             "email": self.price,
             "description": self.description,
             "password": self.amount,
-        }
-
-
-class User(Base):
-    first_name = models.CharField("first name", max_length=100)
-    last_name = models.CharField("last name", max_length=100)
-    email = models.EmailField("email", max_length=100)
-    password = models.CharField("password", max_length=100)
-
-    def serialize(self):
-        return {
-            "name": f"{self.first_name}  {self.last_name}",
-            "email": self.email,
-            "password": self.password,
         }
 
 

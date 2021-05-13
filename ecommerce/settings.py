@@ -133,6 +133,8 @@ USE_TZ = True
 
 STATIC_URL = '/static/'  # Development
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  # Production
+MEDIA_URL = 'media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 LOGOUT_REDIRECT_URL = "index"
 
 EMAIL_HOST = 'underground.store3@gmail.com'

@@ -51,8 +51,10 @@ def register_product(request):
     if request.POST:
         form = ProductModelForm(request.POST, request.FILES)
         if form.is_valid():
-            prod = form.save(commit=False)
-            print(prod.name)
+            form.save()
+            messages.success(request, "Produto salvo com sucesso!")
+        else:
+            messages.error(request, "Erro ao salvar produto!")
     else:
         form = ProductModelForm()
     context = {"form": form}
