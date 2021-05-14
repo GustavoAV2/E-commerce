@@ -484,7 +484,6 @@ body{
 .collectipn_section_3{ width: 100%; float: left; padding-top: 0px;}
 .new_product {
     width: 100%;
-    float: left;
     background-color: #eae7e7;
     height: auto;
     padding-top: 70px;
@@ -492,7 +491,7 @@ body{
     padding-left: 70px;
     padding-bottom: 70px;
 }
-.shoes-img3{ width: 100%; text-align: center;}
+.shoes-img3{ width: 100%; text-align: center}
 .view-product{ text-align:center; }
 .size_btn{
     padding: 6px;
@@ -554,7 +553,7 @@ body{
 
 .sale_text{
 	width: 100%;
-	float: left;
+	text-align:center;
 	font-size: 45px;
 	color: #ed2540;
 	line-height: 75px;
