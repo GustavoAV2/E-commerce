@@ -1,10 +1,11 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, resolve_url
 from django.shortcuts import get_object_or_404
 from django.http import HttpResponse
 from django.template import loader
 from django.contrib import messages
 from core.models import Product
 from .forms import ContactForm, ProductModelForm
+from mp_functions.functions import create_preference
 
 
 def index(request):
@@ -49,22 +50,29 @@ def product(request, product_id: int):
     return render(request, "product.html", context)
 
 
-def register_product(request):
-    if request.POST:
-        form = ProductModelForm(request.POST, request.FILES)
-        if form.is_valid():
-            form.save()
-            messages.success(request, "Produto salvo com sucesso!")
+def manager_historic(request):
+    if str(request.user) != "AnonymousUser":
+        if str(request.method) == "POST":
+            form = ProductModelForm(request.POST, request.FILES)
+            if form.is_valid():
+                form.save()
+                messages.success(request, "Produto salvo com sucesso!")
+            else:
+                messages.error(request, "Erro ao salvar produto!")
         else:
-            messages.error(request, "Erro ao salvar produto!")
-    else:
-        form = ProductModelForm()
-    context = {"form": form}
-    return render(request, "register_product.html", context)
+            form = ProductModelForm()
+        context = {"form": form}
+        return render(request, "register_product.html", context)
+    return redirect(to="/")
 
 
-def payment_product(product: Product):
-    pass
+def payment_product(request, product_id: int, amount: int = 1):
+    product_selected = get_object_or_404(Product, id=product_id)
+    if product_selected:
+        product_dictionary = product_selected.serialize()
+        url_payment = create_preference(product_dictionary=product_dictionary, amount=amount)
+        print(url_payment)
+        return redirect(url_payment, permanent=True)
 
 
 def about(request):

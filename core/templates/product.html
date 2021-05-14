@@ -93,14 +93,16 @@
                         <button class="size_btn">2GG</button>
                         <br><br>
                         <label>Quantidade:</label>
-                        <select>
+                        <select name="size">
                             {% for number in sizes %}
                             <option>{{number}}</option>
                             {% endfor %}
                         </select>
                     </div>
 
-                    <button class="buy_new">Comprar</button>
+                    <a href="{% url 'payment_product' product.id %}">
+                        <button class="buy_new">Comprar</button>
+                    </a>
                 </div>
             </div>
         </div>
