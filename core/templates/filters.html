@@ -1,0 +1,34 @@
+{% load static %}
+{% extends 'base.html' %}
+{% block content %}
+<div class="collection_text">
+	<div class="filters">
+		<div>
+			<label>Pesquisar:</label>
+			<input type="text" placeholder="Nome do produto..." style="width:350px;">
+			<button class="btn-search">
+				Buscar
+			</button>
+		</div>
+		<div style="padding-left:20px;">
+			<label>Filtrar:</label>
+			<select>
+				<option>Relevância</option>
+				<option>Promoção</option>
+				<option>Maior preço</option>
+				<option>Menor preço</option>
+			</select>
+		</div>
+		<div style="padding-left:20px;">
+			<label>Tamanhos:</label>
+			<select>
+				<option>...</option>
+				<option>P</option>
+				<option>M</option>
+				<option>G</option>
+				<option>GG</option>
+			</select>
+		</div>
+	</div>
+</div>
+{% endblock %}

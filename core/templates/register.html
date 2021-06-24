@@ -1,11 +1,29 @@
 {% load static %}
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% load bootstrap4 %}
+{% extends 'base.html' %}
 
-</body>
-</html>
+{% block content %}
+
+<!-- contact section start -->
+<div class="container">
+    <h1 class="new_text"><strong>Nos contate agora!</strong></h1>
+</div>
+<div class="layout_padding contact_section">
+    <div class="container background-black">
+        <div class="container" style="margin-top:5px; text-align:center;">
+            {% bootstrap_messages %}
+        </div>
+        <form action="{% url 'about' %}" method="post" class="form" autocomplete="off">
+            {% csrf_token %}
+            {% bootstrap_form form %}
+
+            {% buttons %}
+             <div class="send_btn">
+                <button type="submit" class="btn btn-primary">Enviar</button>
+             </div>
+            {% endbuttons %}
+        </form>
+    </div>
+</div>
+
+{% endblock %}

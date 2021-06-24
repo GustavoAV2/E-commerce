@@ -1,29 +1,31 @@
-from django.shortcuts import render, redirect, resolve_url
+from django.shortcuts import render, redirect
 from django.shortcuts import get_object_or_404
-from django.http import HttpResponse
-from django.template import loader
+from django.views.generic import TemplateView
 from django.contrib import messages
 from core.models import Product
 from .forms import ContactForm, ProductModelForm
 from mp_functions.functions import create_preference
 
 
-def index(request):
-    products = Product.objects.all()
-    last_number = 9 if len(products) > 9 else len(products)
+class IndexView(TemplateView):
+    template_name = "index.html"
 
-    context = {}
-    if products:
-        context = {
-            "products": products[0:last_number],
-            "new": {
-                "id": products[0].id,
-                "image": products[0].image,
-                "name": products[0].name.split(' '),
-                "price": products[0].price
+    def get(self, request):
+        products = Product.objects.all()
+        last_number = 9 if len(products) > 9 else len(products)
+
+        context = {}
+        if products:
+            context = {
+                "products": products[0:last_number],
+                "new": {
+                    "id": products[0].id,
+                    "image": products[0].image,
+                    "name": products[0].name.split(' '),
+                    "price": products[0].price
+                }
             }
-        }
-    return render(request, "index.html", context)
+        return render(request, self.template_name, context)
 
 
 def collection(request, pag: int = 1):
@@ -91,12 +93,17 @@ def about(request):
     return render(request, "contact.html", context)
 
 
-def error404(request, exception):
-    template = loader.get_template("errors/404.html")
-    return HttpResponse(content=template.render(), content_type='text/html; charset=utf8', status=404)
-
-
-def error500(request):
-    template = loader.get_template("errors/500.html")
-    return HttpResponse(content=template.render(), content_type='text/html; charset=utf8', status=500)
-
+#  Last form to coding errors
+"""
+    from django.http import HttpResponse
+    from django.template import loader
+    
+    def error404(request, exception):
+        template = loader.get_template("errors/404.html")
+        return HttpResponse(content=template.render(), content_type='text/html; charset=utf8', status=404)
+    
+    
+    def error500(request):
+        template = loader.get_template("errors/500.html")
+        return HttpResponse(content=template.render(), content_type='text/html; charset=utf8', status=500)
+"""
