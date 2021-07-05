@@ -14,11 +14,31 @@ class Base(models.Model):
         abstract = True
 
 
+class Info(Base):
+    ICON_CHOICES = {
+        ("icon-instagram", "Instagram"),
+        ("icon-email", "Email"),
+        ("icon-phone", "Phone"),
+    }
+
+    service = models.CharField("service", max_length=100)
+    description = models.CharField("description", max_length=200)
+    icon = models.CharField("icon", max_length=14, choices=ICON_CHOICES)
+
+    class Meta:
+        verbose_name = "Informação para contato"
+        verbose_name_plural = "Informações para contato"
+
+    def serialize(self):
+        return self.service
+
+
 class Product(Base):
     image = StdImageField("image", upload_to="products", variations={'thumb': (124, 124)})
     name = models.CharField("name", max_length=100)
     price = models.DecimalField("price", decimal_places=2, max_digits=6)
     description = models.CharField("description", null=True, max_length=300)
+    size = models.CharField('size', max_length=5)
     amount = models.IntegerField("amount")
     slug = models.SlugField('slug', max_length=100, blank=True, editable=False)
 
@@ -36,3 +56,4 @@ def product_pre_save(signal, instance, sender, **kwargs):
 
 
 signals.pre_save.connect(product_pre_save, sender=Product)
+
