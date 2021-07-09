@@ -1,4 +1,7 @@
 """
+Install requirements
+- pipenv install -r requirements.txt
+
 Create Project
 - django-admin startproject project .
 
