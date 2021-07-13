@@ -1,8 +1,14 @@
+import uuid
 from django.db import models
 from stdimage.models import StdImageField
-# Signals
 from django.db.models import signals
 from django.template.defaultfilters import slugify
+
+
+def get_file_path(_instance, filename):
+    ext = filename.split('.')[-1]
+    filename = f"{uuid.uuid4()}.{ext}"
+    return filename
 
 
 class Base(models.Model):
@@ -26,15 +32,14 @@ class Info(Base):
     icon = models.CharField("icon", max_length=14, choices=ICON_CHOICES)
 
     class Meta:
-        verbose_name = "Informação para contato"
-        verbose_name_plural = "Informações para contato"
+        verbose_name = "Contact information"
 
     def serialize(self):
         return self.service
 
 
 class Product(Base):
-    image = StdImageField("image", upload_to="products", variations={'thumb': (124, 124)})
+    image = StdImageField("image", upload_to=get_file_path, variations={'thumb': (124, 124)})
     name = models.CharField("name", max_length=100)
     price = models.DecimalField("price", decimal_places=2, max_digits=6)
     description = models.CharField("description", null=True, max_length=300)
@@ -56,4 +61,3 @@ def product_pre_save(signal, instance, sender, **kwargs):
 
 
 signals.pre_save.connect(product_pre_save, sender=Product)
-

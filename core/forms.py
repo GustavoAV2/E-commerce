@@ -16,8 +16,6 @@ class ContactForm(forms.Form):
         """
         Function to send email with smtlib, from Marvin email to "to_user_mail"
         inserting "body_content" in content of email
-
-        :return:
         """
         name = self.cleaned_data["name"]
         email = self.cleaned_data["email"]

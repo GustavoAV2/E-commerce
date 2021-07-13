@@ -76,11 +76,15 @@
     <div class="container">
         <div class="mail_section">
             <div class="row">
+                {% for info in contact %}
                 <div class="col-sm-6 col-lg-5">
+                    <div class="icon">
+                        <i> class="{{ info.icon }}"</i>
+                    </div>
                     <div class="footer-logo">
-                        <span class="info_text">E-mail: </span>
+                        <span class="info_text">{{ info.service }}</span>
                         <!-- <img src="{% static 'images/email-icon.png' %}">-->
-                        <span class="map_text">underground.store3@gmail.com</span>
+                        <span class="map_text">{{ info.description }}</span>
                     </div>
                 </div>
                 <div class="col-sm-6 col-lg-5">

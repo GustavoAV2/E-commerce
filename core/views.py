@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.shortcuts import get_object_or_404
 from django.views.generic import TemplateView
 from django.contrib import messages
-from core.models import Product
+from core.models import Product, Info
 from .forms import ContactForm, ProductModelForm
 from mp_functions.functions import create_preference
 
@@ -10,13 +10,17 @@ from mp_functions.functions import create_preference
 class IndexView(TemplateView):
     template_name = "index.html"
 
+    # def get_context_data(self, **kwargs):
+    #     context = super(IndexView, self).get_context_data(**kwargs)
+    #     return context
+
     def get(self, request):
         products = Product.objects.all()
         last_number = 9 if len(products) > 9 else len(products)
 
         context = {}
         if products:
-            context = {
+            context.update({
                 "products": products[0:last_number],
                 "new": {
                     "id": products[0].id,
@@ -24,7 +28,7 @@ class IndexView(TemplateView):
                     "name": products[0].name.split(' '),
                     "price": products[0].price
                 }
-            }
+            })
         return render(request, self.template_name, context)
 
 
@@ -37,7 +41,9 @@ def collection(request, pag: int = 1):
 
     context = {
         "products": list_products,
+        "contact": Info.objects.all()
     }
+
     return render(request, "store.html", context)
 
 
@@ -49,6 +55,8 @@ def product(request, product_id: int):
         "catalog": True,
         "sizes": [size for size in range(1, product_selected.amount)]
     }
+    info = Info.objects.all()
+    context.update({"contact": info})
     return render(request, "product.html", context)
 
 
@@ -90,6 +98,8 @@ def about(request):
     context = {
         "form": form
     }
+    info = Info.objects.all()
+    context.update({"contact": info})
     return render(request, "contact.html", context)
 
 
