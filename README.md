@@ -1,7 +1,7 @@
 # E-commerce
 
-Install requirements
-- pipenv install -r requirements.txt
+- Install requirements
+`pipenv install -r requirements.txt`
 
-Run project
-- python manage.py runserver
+- Run project
+`python manage.py runserver`
