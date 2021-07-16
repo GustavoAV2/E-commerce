@@ -79,7 +79,7 @@
                 {% for info in contact %}
                 <div class="col-sm-6 col-lg-5">
                     <div class="icon">
-                        <i> class="{{ info.icon }}"</i>
+                        <i class="{{ info.icon }}"> </i>
                     </div>
                     <div class="footer-logo">
                         <span class="info_text">{{ info.service }}</span>
@@ -87,13 +87,14 @@
                         <span class="map_text">{{ info.description }}</span>
                     </div>
                 </div>
-                <div class="col-sm-6 col-lg-5">
-                    <div class="footer-logo">
-                        <span class="info_text">Instagram: </span>
-                        <!-- <img style="font-size=10px;" src="{% static 'images/logo-instagram-png-fundo-transparente4.png' %}">-->
-                        <a class="link" target="_blank" href="https://www.instagram.com/undergroundstore_og/">@undergroundstore_og</a>
-                    </div>
-                </div>
+                {% endfor %}
+<!--                <div class="col-sm-6 col-lg-5">-->
+<!--                    <div class="footer-logo">-->
+<!--                        <span class="info_text">Instagram: </span>-->
+<!--                        &lt;!&ndash; <img style="font-size=10px;" src="{% static 'images/logo-instagram-png-fundo-transparente4.png' %}">&ndash;&gt;-->
+<!--                        <a class="link" target="_blank" href="https://www.instagram.com/undergroundstore_og/">@undergroundstore_og</a>-->
+<!--                    </div>-->
+<!--                </div>-->
                 <div class="col-sm-2"></div>
             </div>
         </div>

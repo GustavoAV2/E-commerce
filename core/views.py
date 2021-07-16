@@ -10,17 +10,15 @@ from mp_functions.functions import create_preference
 class IndexView(TemplateView):
     template_name = "index.html"
 
-    # def get_context_data(self, **kwargs):
-    #     context = super(IndexView, self).get_context_data(**kwargs)
-    #     return context
-
     def get(self, request):
         products = Product.objects.all()
+        info = Info.objects.all()
         last_number = 9 if len(products) > 9 else len(products)
 
         context = {}
         if products:
             context.update({
+                "contact": info,
                 "products": products[0:last_number],
                 "new": {
                     "id": products[0].id,
@@ -34,6 +32,8 @@ class IndexView(TemplateView):
 
 def collection(request, pag: int = 1):
     products = Product.objects.all()
+    info = Info.objects.all()
+
     first_number = 0 if pag == 0 else (pag - 1) * 9
     last_number = pag * 9
 
@@ -41,7 +41,7 @@ def collection(request, pag: int = 1):
 
     context = {
         "products": list_products,
-        "contact": Info.objects.all()
+        "contact": info,
     }
 
     return render(request, "store.html", context)
@@ -49,14 +49,14 @@ def collection(request, pag: int = 1):
 
 def product(request, product_id: int):
     product_selected = get_object_or_404(Product, id=product_id)
+    info = Info.objects.all()
 
     context = {
         "product": product_selected,
         "catalog": True,
-        "sizes": [size for size in range(1, product_selected.amount)]
+        "sizes": [size for size in range(1, product_selected.amount)],
+        "contact": info
     }
-    info = Info.objects.all()
-    context.update({"contact": info})
     return render(request, "product.html", context)
 
 
